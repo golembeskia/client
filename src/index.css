@@ -1,0 +1,34 @@
+/* 
+@import '~mdb-ui-kit/css/mdb.min.css';
+
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+  } */
+
+.slider img,
+.card-image {
+  /* height: 450px;
+  width: auto;
+  object-fit: cover; */
+  /* height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px; */
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+
+#root > ul > span > form > span > svg {
+  position: relative;
+  top: -42px;
+  left: 178px;
+} 
+
+#root > ul > span  {
+  height: 40px;
+}
+
+.pointer {
+  cursor: pointer;
+}
