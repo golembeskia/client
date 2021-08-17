@@ -17,3 +17,5 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           react_app_api: ${{secrets.REACT_APP_API}}
+          react_app_forgot_password_redirect: ${{secrets.REACT_APP_FORGOT_PASSWORD_REDIRECT}}
+          react_app_register_redirect_url: ${{secrets.REACT_APP_REGISTER_REDIRECT_URL}}
