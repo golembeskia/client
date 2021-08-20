@@ -32,7 +32,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [productIds, setProductIds] = useState(["test"]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 0]);
+  const [price, setPrice] = useState([0, 1000000]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
@@ -171,7 +171,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setStar("");
     setSubIds([]);
     setBrandIds([]);
@@ -205,7 +205,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setStar(num);
     setSubIds([]);
@@ -252,7 +252,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setStar("");
     setBrandIds([]);
@@ -332,7 +332,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setStar("");
     setSubIds([]);
     setCategoryIds([]);
@@ -433,7 +433,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setStar("");
     setBrandIds([]);
@@ -484,7 +484,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setStar("");
     setBrandIds([]);
@@ -531,7 +531,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setSubIds([]);
     setStar("");
@@ -571,7 +571,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setPrice([0, 0]);
+    setPrice([0, 1000000]);
     setCategoryIds([]);
     setSubIds([]);
     setStar("");
