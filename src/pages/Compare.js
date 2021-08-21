@@ -25,6 +25,7 @@ const Compare = () => {
           <th scope="col">Title</th>
           <th scope="col">Price</th>
           <th scope="col">Brand</th>
+          <th scope="col">Serving Size</th>
           <th scope="col">Diet</th>
           <th scope="col">Calories</th>
           <th scope="col">Carbohydrates</th>
