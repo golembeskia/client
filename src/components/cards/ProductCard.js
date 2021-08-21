@@ -131,7 +131,7 @@ const ProductCard = ({ product }) => {
           // title={`${title} - $${price}`}
           // description={`${description && description.substring(0, 40)}...`}
           title={`${title}`}
-          description={`Calories: ${calories} Carbs: ${carbohydrates} Fat: ${fat} Protein: ${protein} Diet: ${diet.name}`}
+          description={`Calories:${calories} Carbs:${carbohydrates}g Fat:${fat}g Protein:${protein}g Diet:${diet.name}`}
         />
       </Card>
     </>
