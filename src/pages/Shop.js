@@ -1035,6 +1035,14 @@ const Shop = () => {
     }, 300);
     return () => clearTimeout(delayed);
   }, [text]);
+  
+    // //2a load products on empty search query
+  useEffect(() => {
+    const delayed = setTimeout(() => {
+      loadAllProducts({ query: text.length <= 0 });
+    }, 50);
+    return () => clearTimeout(delayed);
+  }, [text]);
 
   //3. load products based on price range
   useEffect(() => {
