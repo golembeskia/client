@@ -125,75 +125,75 @@ const ProductListItems = ({ product }) => {
       <li className="list-group-item">
         Serving Size:{" "}
         <span className="label label-default label-pill float-end">
-          {servingsize}
+          {servingsize}g
         </span>
       </li>
 
       <li className="list-group-item">
         Calories:{" "}
         <span className="label label-default label-pill float-end">
-          {calories}
+          {calories}g
         </span>
       </li>
 
       <li className="list-group-item">
         Protein:{" "}
         <span className="label label-default label-pill float-end">
-          {protein}
+          {protein}g
         </span>
       </li>
 
       <li className="list-group-item">
         Total Carbohydrates:{" "}
         <span className="label label-default label-pill float-end">
-          {carbohydrates}
+          {carbohydrates}g
         </span>
       </li>
 
       <li className="list-group-item">
         Dietary Fiber:{" "}
         <span className="label label-default label-pill float-end">
-          {dietaryfiber}
+          {dietaryfiber}g
         </span>
       </li>
 
       <li className="list-group-item">
         Total Sugar:{" "}
         <span className="label label-default label-pill float-end">
-          {sugar}
+          {sugar}g
         </span>
       </li>
 
       <li className="list-group-item">
         Total Fat:{" "}
-        <span className="label label-default label-pill float-end">{fat}</span>
+        <span className="label label-default label-pill float-end">{fat}g</span>
       </li>
 
       <li className="list-group-item">
         Trans Fat:{" "}
         <span className="label label-default label-pill float-end">
-          {transfat}
+          {transfat}g
         </span>
       </li>
 
       <li className="list-group-item">
         Saturated Fat:{" "}
         <span className="label label-default label-pill float-end">
-          {saturatedfat}
+          {saturatedfat}g
         </span>
       </li>
 
       <li className="list-group-item">
         Cholesterol:{" "}
         <span className="label label-default label-pill float-end">
-          {cholesterol}
+          {cholesterol}mg
         </span>
       </li>
 
       <li className="list-group-item">
         Sodium:{" "}
         <span className="label label-default label-pill float-end">
-          {sodium}
+          {sodium}mg
         </span>
       </li>
 
