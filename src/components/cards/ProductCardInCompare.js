@@ -51,6 +51,7 @@ const ProductCardInCompare = ({ p }) => {
         <td>{p.title}</td>
         <td>${p.price}</td>
         <td>{p.brand.name}</td>
+        <td>{p.servingsize}</td>
         <td>{p.diet.name}</td>
         <td>{p.calories}</td>
         <td>{p.carbohydrates}</td>
