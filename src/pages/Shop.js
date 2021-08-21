@@ -992,7 +992,7 @@ const Shop = () => {
     "Fat",
     "Carbs",
     "Protein",
-    "Sugar"
+    "Sugar",
   ]);
   const [column, setColumn] = useState("");
 
@@ -1035,8 +1035,8 @@ const Shop = () => {
     }, 300);
     return () => clearTimeout(delayed);
   }, [text]);
-  
-    // //2a load products on empty search query
+
+  // //2a load products on empty search query
   useEffect(() => {
     const delayed = setTimeout(() => {
       loadAllProducts({ query: text.length <= 0 });
@@ -1111,6 +1111,12 @@ const Shop = () => {
     console.log(inTheState);
     fetchProducts({ category: inTheState });
     // console.log({ category: inTheState });
+
+    //load all products when nothing is checked
+    if (foundInTheState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
   };
 
   // 5. show sub categories
@@ -1158,6 +1164,12 @@ const Shop = () => {
     console.log(inTheState);
     fetchProducts({ sub: inTheState });
     // console.log({ sub: inTheState });
+
+    //load all products when nothing is checked
+    if (foundInTheState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
   };
 
   // 6. show brands
@@ -1204,6 +1216,12 @@ const Shop = () => {
     console.log(inTheState);
     fetchProducts({ brand: inTheState });
     // console.log({ category: inTheState });
+
+    //load all products when nothing is checked
+    if (foundInTheState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
   };
 
   // 7. show diet in a list of checkbox
@@ -1248,6 +1266,12 @@ const Shop = () => {
     console.log(inTheState);
     fetchProducts({ diet: inTheState });
     // console.log({ diet: inTheState });
+
+    //load all products when nothing is checked
+    if (foundInTheState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
   };
 
   // 8. show ingredient in a list of checkbox
@@ -1292,6 +1316,12 @@ const Shop = () => {
     console.log(inTheState);
     fetchProducts({ ingredient: inTheState });
     // console.log({ ingredient: inTheState });
+
+    //load all products when nothing is checked
+    if (foundInTheState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
   };
 
   // 9. show products by star rating
@@ -1346,25 +1376,24 @@ const Shop = () => {
       }
       return 0;
     });
-    fetchProducts({sort: sortedProducts})
+    fetchProducts({ sort: sortedProducts });
   };
 
   //11. show columns for table view
   const showColumns = () =>
     columns.map((c) => (
       <div>
-      <Checkbox
-        value={c}
-        name={c}
-        checked={c === column}
-        className="pb-1 pl-4 pr-4"
-      >
-        {c}
-      </Checkbox>
-      <br />
+        <Checkbox
+          value={c}
+          name={c}
+          checked={c === column}
+          className="pb-1 pl-4 pr-4"
+        >
+          {c}
+        </Checkbox>
+        <br />
       </div>
     ));
-  
 
   //toggle between card & table
   const onClick = () => setShowResults(false);
