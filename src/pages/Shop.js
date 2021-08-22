@@ -1529,7 +1529,7 @@ const Shop = () => {
               key="9"
               title={
                 <span className="h6">
-                  <ExperimentOutlined /> Normlaize
+                  <ExperimentOutlined /> Normalize
                 </span>
               }
             ></SubMenu>
