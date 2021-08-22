@@ -1412,7 +1412,8 @@ const Shop = () => {
               key="1"
               title={
                 <span className="h6">
-                  <DollarOutlined /> Price
+                  {/* <DollarOutlined /> Price */}
+                  Price
                 </span>
               }
             >
@@ -1433,7 +1434,8 @@ const Shop = () => {
               key="2"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Categories
+                  {/* <DownSquareOutlined /> Categories */}
+                  Categories
                 </span>
               }
             >
@@ -1445,7 +1447,8 @@ const Shop = () => {
               key="3"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Sub Categories
+                  {/* <DownSquareOutlined /> Sub Categories */}
+                  Sub Categories
                 </span>
               }
             >
@@ -1457,7 +1460,8 @@ const Shop = () => {
               key="4"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Brand
+                  {/* <DownSquareOutlined /> Brand */}
+                  Brand
                 </span>
               }
             >
@@ -1471,7 +1475,8 @@ const Shop = () => {
               key="5"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Diet
+                  {/* <DownSquareOutlined /> Diet */}
+                  Diet
                 </span>
               }
             >
@@ -1485,7 +1490,8 @@ const Shop = () => {
               key="6"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Ingredients
+                  {/* <DownSquareOutlined /> Ingredients */}
+                  Ingredients
                 </span>
               }
             >
@@ -1499,7 +1505,8 @@ const Shop = () => {
               key="7"
               title={
                 <span className="h6">
-                  <StarOutlined /> Rating
+                  {/* <StarOutlined /> Rating */}
+                  Rating
                 </span>
               }
             >
@@ -1514,7 +1521,8 @@ const Shop = () => {
               key="8"
               title={
                 <span className="h6">
-                  <GoldOutlined /> Sort
+                  {/* <GoldOutlined /> Sort */}
+                  Sort
                 </span>
               }
             >
@@ -1529,7 +1537,8 @@ const Shop = () => {
               key="9"
               title={
                 <span className="h6">
-                  <ExperimentOutlined /> Normalize
+                  {/* <ExperimentOutlined /> Normalize */}
+                  Normalize
                 </span>
               }
             ></SubMenu>
@@ -1550,7 +1559,8 @@ const Shop = () => {
                 key="10"
                 title={
                   <span className="h6">
-                    <TableOutlined /> Show Columns
+                    {/* <TableOutlined /> Show Columns */}
+                    Show Columns
                   </span>
                 }
               >
