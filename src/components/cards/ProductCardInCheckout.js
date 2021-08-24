@@ -4,12 +4,14 @@ import laptop from "../../images/placeholder.png";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import {
+  BranchesOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
 
 const ProductCardInCheckout = ({ p }) => {
+  const { price, brand, brands, title, diet, category, subs } = p;
   // const colors = ["Black", "Brown", "Silver", "White", "Blue"];
   let dispatch = useDispatch();
 
@@ -102,10 +104,12 @@ const ProductCardInCheckout = ({ p }) => {
             )}
           </div>
         </td>
-        <td>{p.title}</td>
-        <td>${p.price}</td>
-        <td>{p.brand.name}</td>
-        <td>{p.diet.name}</td>
+        <td>{title}</td>
+        <td>${price}</td>
+        <td>{brand.name}</td>
+        <td>{diet.name}</td>
+        <td>{category.name}</td>
+        <td>{subs.slug}</td>
         {/* <td>
           <select
             onChange={handleColorChange}
