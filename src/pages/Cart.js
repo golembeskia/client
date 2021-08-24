@@ -47,12 +47,14 @@ const Cart = () => {
           <th scope="col">Count</th>
           <th scope="col">Shipping</th> */}
           <th scope="col">Diet</th>
+          <th scope="col">Category</th>
+          <th scope="col">Sub Category</th>
           <th scope="col">Remove</th>
         </tr>
       </thead>
     {cart.map((p) => (
-        <ProductCardInCheckout key={p._id} p={p} />
-      ))}{" "}
+        <ProductCardInCheckout key={p._id} p={p}/>
+      ))}
     </table>
   );
 
