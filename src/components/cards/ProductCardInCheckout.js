@@ -104,12 +104,22 @@ const ProductCardInCheckout = ({ p }) => {
             )}
           </div>
         </td>
+        <td>{brand.name}</td>
         <td>{title}</td>
         <td>${price}</td>
-        <td>{brand.name}</td>
-        <td>{diet.name}</td>
-        <td>{category.name}</td>
-        <td>{subs.slug}</td>
+        {/* <td>{diet.name}</td> */}
+        <td>
+          {diet.map((d) => (
+            <a key={d._id}>{d.name}</a>
+          ))}
+        </td>
+        {/* <td>{category.name}</td> */}
+        {/* <td>{subs.name}</td> */}
+        {/* <td>
+          {subs.map((s) => (
+            <a key={s._id}>{s.name}</a>
+          ))}
+        </td> */}
         {/* <td>
           <select
             onChange={handleColorChange}
