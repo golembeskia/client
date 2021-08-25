@@ -45,13 +45,15 @@ thead button {
 }
 
 thead button.ascending::after {
-  content: '👇';
+  /* content: '👇'; */
+  content: '\21E9';
   display: inline-block;
   margin-left: 1em;
 }
 
 thead button.descending::after {
-  content: '☝️';
+  /* content: '☝️'; */
+  content: '\21E7';
   display: inline-block;
   margin-left: 1em;
 }
