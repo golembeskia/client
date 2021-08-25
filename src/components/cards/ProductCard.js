@@ -142,7 +142,6 @@ const ProductCard = ({ product }) => {
         Diet:{diet.map((d) => (
             <a key={d._id}>{d.name}</a>
           ))}
-        />
       </Card>
     </>
   );
