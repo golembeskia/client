@@ -158,6 +158,9 @@ const Compare = (props) => {
           <th>
             <div>Title</div>
           </th>
+           <th>
+            <div>Serving Size</div>
+          </th>
           <th>
             <button
               type="button"
