@@ -14,11 +14,16 @@ on:
       - staging
       - performanceTesting
       - patch
+  workflow_run:
+    workflows: ["Optimize-Images"]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   ci:   
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       matrix:
         node: ["16"]
