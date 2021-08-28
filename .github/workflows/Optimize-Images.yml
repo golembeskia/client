@@ -1,7 +1,21 @@
 name: Optimize-Images
 
-on: pull_request
-
+on:
+  push:
+    branches:
+      - main
+      - development
+      - staging
+      - performanceTesting
+      - patch
+  pull_request:
+    branches:
+      - main
+      - development
+      - staging
+      - performanceTesting
+      - patch
+  workflow_dispatch:
 jobs:
   build:
     name: calibreapp/image-actions
