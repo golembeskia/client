@@ -18,7 +18,9 @@ on:
 
 jobs:
   ci:
-    name: Scanning Shelf Health for credentials and secrets
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    name: golembeskia/client
+   # name: Scanning Shelf Health for credentials and secrets
     runs-on: ubuntu-latest
     strategy:
       matrix:
