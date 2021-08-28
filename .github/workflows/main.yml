@@ -1,21 +1,24 @@
-name: Deploy
-
+name: Continuous-Deployment
 on:
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows: ["Continuous-Integration"]
+    types:
+      - completed
   workflow_dispatch:
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    strategy:
+      matrix:
+        node: ["16"]
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - name: Checking out Shelf Health API coder
+        uses: actions/checkout@v2
+
+      - name: Deploying to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-#           react_app_api: ${{secrets.REACT_APP_API}}
-#           react_app_forgot_password_redirect: ${{secrets.REACT_APP_FORGOT_PASSWORD_REDIRECT}}
-#           react_app_register_redirect_url: ${{secrets.REACT_APP_REGISTER_REDIRECT_URL}}
