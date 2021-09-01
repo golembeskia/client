@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const UserNav = () => (
   <nav>
@@ -21,6 +21,6 @@ const UserNav = () => (
       </li>
     </ul>
   </nav>
-);
+)
 
-export default UserNav;
+export default UserNav

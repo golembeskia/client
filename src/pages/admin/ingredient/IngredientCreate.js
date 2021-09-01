@@ -1,76 +1,76 @@
-import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import AdminNav from '../../../components/nav/AdminNav'
+import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import {
   createIngredient,
   getIngredients,
-  removeIngredient,
-} from "../../../functions/ingredient";
-import { Link } from "react-router-dom";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import IngredientForm from "../../../components/forms/IngredientForm";
-import LocalSearch from "../../../components/forms/LocalSearch";
+  removeIngredient
+} from '../../../functions/ingredient'
+import { Link } from 'react-router-dom'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import IngredientForm from '../../../components/forms/IngredientForm'
+import LocalSearch from '../../../components/forms/LocalSearch'
 
 const IngredientCreate = () => {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }))
 
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [ingredients, setIngredients] = useState([]);
+  const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [ingredients, setIngredients] = useState([])
 
-  //searching/filtering
-  //step 1
-  const [keyword, setKeyword] = useState("");
+  // searching/filtering
+  // step 1
+  const [keyword, setKeyword] = useState('')
 
   useEffect(() => {
-    loadIngredients();
-  }, []);
+    loadIngredients()
+  }, [])
 
   const loadIngredients = () =>
-    getIngredients().then((b) => setIngredients(b.data));
+    getIngredients().then((b) => setIngredients(b.data))
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(name);
-    setLoading(true);
+    setLoading(true)
     createIngredient({ name }, user.token)
       .then((res) => {
         // console.log(res)
-        setLoading(false);
-        setName("");
-        toast.success(`"${res.data.name}" is created`);
-        loadIngredients();
+        setLoading(false)
+        setName('')
+        toast.success(`"${res.data.name}" is created`)
+        loadIngredients()
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        if (err.response.status === 400) toast.error(err.response.data);
-      });
-  };
+        console.log(err)
+        setLoading(false)
+        if (err.response.status === 400) toast.error(err.response.data)
+      })
+  }
 
   const handleRemove = async (slug) => {
     // let answer = window.confirm("Delete?");
     // console.log(answer, slug);
-    if (window.confirm("Delete?")) {
-      setLoading(true);
+    if (window.confirm('Delete?')) {
+      setLoading(true)
       removeIngredient(slug, user.token)
         .then((res) => {
-          setLoading(false);
-          toast.error(`${res.data.name} deleted`);
-          loadIngredients();
+          setLoading(false)
+          toast.error(`${res.data.name} deleted`)
+          loadIngredients()
         })
         .catch((err) => {
           if (err.response.status === 400) {
-            setLoading(false);
-            toast.error(err.response.data);
+            setLoading(false)
+            toast.error(err.response.data)
           }
-        });
+        })
     }
-  };
+  }
 
-  //step 4
-  const searched = (keyword) => (b) => b.name.toLowerCase().includes(keyword);
+  // step 4
+  const searched = (keyword) => (b) => b.name.toLowerCase().includes(keyword)
 
   return (
     <div className="container-fluid">
@@ -79,11 +79,13 @@ const IngredientCreate = () => {
           <AdminNav />
         </div>
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-danger">Loading..</h4>
-          ) : (
+              )
+            : (
             <h4>Create ingredient</h4>
-          )}
+              )}
           <IngredientForm
             handleSubmit={handleSubmit}
             name={name}
@@ -113,7 +115,7 @@ const IngredientCreate = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default IngredientCreate;
+export default IngredientCreate

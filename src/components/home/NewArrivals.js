@@ -1,38 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { getProducts, getProductsCount } from "../../functions/product";
-import ProductCard from "../cards/ProductCard";
-import LoadingCard from "../cards/LoadingCard";
-import { Pagination } from "antd";
+import React, { useEffect, useState } from 'react'
+import { getProducts, getProductsCount } from '../../functions/product'
+import ProductCard from '../cards/ProductCard'
+import LoadingCard from '../cards/LoadingCard'
+import { Pagination } from 'antd'
 
 const NewArrivals = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [productsCount, setProductsCount] = useState(0);
-  const [page, setPage] = useState(1);
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [productsCount, setProductsCount] = useState(0)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
-    loadAllProducts();
-  }, [page]);
+    loadAllProducts()
+  }, [page])
 
   useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
-  }, []);
+    getProductsCount().then((res) => setProductsCount(res.data))
+  }, [])
 
   const loadAllProducts = () => {
-    setLoading(true);
+    setLoading(true)
     // sort, order, limit
-    getProducts("createdAt", "desc", page).then((res) => {
-      setProducts(res.data);
-      setLoading(false);
-    });
-  };
+    getProducts('createdAt', 'desc', page).then((res) => {
+      setProducts(res.data)
+      setLoading(false)
+    })
+  }
 
   return (
     <>
       <div className="container">
-        {loading ? (
+        {loading
+          ? (
           <LoadingCard count={6} />
-        ) : (
+            )
+          : (
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-2">
@@ -40,7 +42,7 @@ const NewArrivals = () => {
               </div>
             ))}
           </div>
-        )}
+            )}
       </div>
 
       <div className="row">
@@ -53,7 +55,7 @@ const NewArrivals = () => {
         </nav>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NewArrivals;
+export default NewArrivals

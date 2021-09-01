@@ -70,53 +70,55 @@
 
 // export default ProductCardInCompare;
 
-import React from "react";
-import ModalImage from "react-modal-image";
-import laptop from "../../images/placeholder.png";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import React from 'react'
+import ModalImage from 'react-modal-image'
+import laptop from '../../images/placeholder.png'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
-  CloseOutlined,
-} from "@ant-design/icons";
+  CloseOutlined
+} from '@ant-design/icons'
 
 const ProductCardInCompare = ({ p }) => {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleRemove = () => {
     // console.log(p._id, "to remove");
-    let compare = [];
+    let compare = []
 
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("compare")) {
-        compare = JSON.parse(localStorage.getItem("compare"));
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('compare')) {
+        compare = JSON.parse(localStorage.getItem('compare'))
       }
       // [1,2,3,4,5]
       compare.map((product, i) => {
         if (product._id === p._id) {
-          compare.splice(i, 1);
+          compare.splice(i, 1)
         }
-      });
+      })
 
-      localStorage.setItem("compare", JSON.stringify(compare));
+      localStorage.setItem('compare', JSON.stringify(compare))
       dispatch({
-        type: "ADD_TO_COMPARE",
-        payload: compare,
-      });
+        type: 'ADD_TO_COMPARE',
+        payload: compare
+      })
     }
-  };
+  }
 
   return (
     <tbody>
       <tr>
         <td>
-          <div style={{ width: "100px", height: "auto" }}>
-            {p.images.length ? (
+          <div style={{ width: '100px', height: 'auto' }}>
+            {p.images.length
+              ? (
               <ModalImage small={p.images[0].url} large={p.images[0].url} />
-            ) : (
+                )
+              : (
               <ModalImage small={laptop} large={laptop} />
-            )}
+                )}
           </div>
         </td>
         <td>{p.title}</td>
@@ -132,7 +134,7 @@ const ProductCardInCompare = ({ p }) => {
         </td>
       </tr>
     </tbody>
-  );
-};
+  )
+}
 
-export default ProductCardInCompare;
+export default ProductCardInCompare

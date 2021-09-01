@@ -96,57 +96,57 @@
 
 // export default Compare;
 
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import ProductCardInCompare from "../components/cards/ProductCardInCompare";
-import "../index.css";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import ProductCardInCompare from '../components/cards/ProductCardInCompare'
+import '../index.css'
 
 const Compare = (props) => {
-  const { compare, user } = useSelector((state) => ({ ...state }));
-  const dispatch = useDispatch();
+  const { compare, user } = useSelector((state) => ({ ...state }))
+  const dispatch = useDispatch()
 
   const useSortableData = (items, config = null) => {
-    const [sortConfig, setSortConfig] = React.useState(config);
+    const [sortConfig, setSortConfig] = React.useState(config)
 
     const sortedItems = React.useMemo(() => {
-      let sortableItems = [...compare];
+      const sortableItems = [...compare]
       if (sortConfig !== null) {
         sortableItems.sort((a, b) => {
           if (a[sortConfig.key] < b[sortConfig.key]) {
-            return sortConfig.direction === "ascending" ? -1 : 1;
+            return sortConfig.direction === 'ascending' ? -1 : 1
           }
           if (a[sortConfig.key] > b[sortConfig.key]) {
-            return sortConfig.direction === "ascending" ? 1 : -1;
+            return sortConfig.direction === 'ascending' ? 1 : -1
           }
-          return 0;
-        });
+          return 0
+        })
       }
-      return sortableItems;
-    }, [compare, sortConfig]);
+      return sortableItems
+    }, [compare, sortConfig])
 
     const requestSort = (key) => {
-      let direction = "ascending";
+      let direction = 'ascending'
       if (
         sortConfig &&
         sortConfig.key === key &&
-        sortConfig.direction === "ascending"
+        sortConfig.direction === 'ascending'
       ) {
-        direction = "descending";
+        direction = 'descending'
       }
-      setSortConfig({ key, direction });
-    };
+      setSortConfig({ key, direction })
+    }
 
-    return { compare: sortedItems, requestSort, sortConfig };
-  };
+    return { compare: sortedItems, requestSort, sortConfig }
+  }
 
-  const { products, requestSort, sortConfig } = useSortableData(props.p);
+  const { products, requestSort, sortConfig } = useSortableData(props.p)
   const getClassNamesFor = (title) => {
     if (!sortConfig) {
-      return;
+      return
     }
-    return sortConfig.key === title ? sortConfig.direction : undefined;
-  };
+    return sortConfig.key === title ? sortConfig.direction : undefined
+  }
 
   const showCompareItems = () => (
     <table className="table table-bordered">
@@ -164,8 +164,8 @@ const Compare = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("price")}
-              className={getClassNamesFor("price")}
+              onClick={() => requestSort('price')}
+              className={getClassNamesFor('price')}
             >
               Price
             </button>
@@ -173,8 +173,8 @@ const Compare = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("calories")}
-              className={getClassNamesFor("calories")}
+              onClick={() => requestSort('calories')}
+              className={getClassNamesFor('calories')}
             >
               Calories
             </button>
@@ -182,8 +182,8 @@ const Compare = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("protein")}
-              className={getClassNamesFor("protein")}
+              onClick={() => requestSort('protein')}
+              className={getClassNamesFor('protein')}
             >
               Protein
             </button>
@@ -197,7 +197,7 @@ const Compare = (props) => {
         <ProductCardInCompare key={p._id} p={p} />
       ))}
     </table>
-  );
+  )
 
   return (
     <div className="container-fluid pt-2">
@@ -205,17 +205,19 @@ const Compare = (props) => {
         <div className="col-md-12">
           <h4>Compare List / {compare.length} Product</h4>
 
-          {!compare.length ? (
+          {!compare.length
+            ? (
             <p>
               No products in compare. <Link to="/shop">Continue Search.</Link>
             </p>
-          ) : (
-            showCompareItems()
-          )}
+              )
+            : (
+                showCompareItems()
+              )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Compare;
+export default Compare

@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import UserNav from "../../components/nav/UserNav";
-import { getWishlist, removeWishlist } from "../../functions/user";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { DeleteOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from 'react'
+import UserNav from '../../components/nav/UserNav'
+import { getWishlist, removeWishlist } from '../../functions/user'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { DeleteOutlined } from '@ant-design/icons'
 
 const Wishlist = () => {
-  const [wishlist, setWishlist] = useState([]);
-  const { user } = useSelector((state) => ({ ...state }));
+  const [wishlist, setWishlist] = useState([])
+  const { user } = useSelector((state) => ({ ...state }))
 
   useEffect(() => {
-    loadWishlist();
-  }, []);
+    loadWishlist()
+  }, [])
 
   const loadWishlist = () =>
     getWishlist(user.token).then((res) => {
       // console.log(res);
-      setWishlist(res.data.wishlist);
-    });
+      setWishlist(res.data.wishlist)
+    })
 
   const handleRemove = (productId) =>
     removeWishlist(productId, user.token).then((res) => {
-      loadWishlist();
-    });
+      loadWishlist()
+    })
 
   return (
     <div className="container-fluid">
@@ -47,7 +47,7 @@ const Wishlist = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Wishlist;
+export default Wishlist

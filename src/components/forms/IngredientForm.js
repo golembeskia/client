@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IngredientForm = ({handleSubmit, name, setName}) => (
+const IngredientForm = ({ handleSubmit, name, setName }) => (
   <form onSubmit={handleSubmit}>
     <div className="form-group">
       <label>Name</label>
@@ -16,6 +16,6 @@ const IngredientForm = ({handleSubmit, name, setName}) => (
       <button className="btn btn-outline-primary">Save</button>
     </div>
   </form>
-);
+)
 
-export default IngredientForm;
+export default IngredientForm

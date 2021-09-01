@@ -1,76 +1,76 @@
-import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import AdminNav from '../../../components/nav/AdminNav'
+import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import {
   createDiet,
   getDiets,
-  removeDiet,
-} from "../../../functions/diet";
-import { Link } from "react-router-dom";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import DietForm from "../../../components/forms/DietForm";
-import LocalSearch from "../../../components/forms/LocalSearch";
+  removeDiet
+} from '../../../functions/diet'
+import { Link } from 'react-router-dom'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import DietForm from '../../../components/forms/DietForm'
+import LocalSearch from '../../../components/forms/LocalSearch'
 
 const DietCreate = () => {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }))
 
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [diets, setDiets] = useState([]);
+  const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [diets, setDiets] = useState([])
 
-  //searching/filtering
-  //step 1
-  const [keyword, setKeyword] = useState("");
+  // searching/filtering
+  // step 1
+  const [keyword, setKeyword] = useState('')
 
   useEffect(() => {
-    loadDiets();
-  }, []);
+    loadDiets()
+  }, [])
 
   const loadDiets = () =>
-    getDiets().then((d) => setDiets(d.data));
+    getDiets().then((d) => setDiets(d.data))
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(name);
-    setLoading(true);
+    setLoading(true)
     createDiet({ name }, user.token)
       .then((res) => {
         // console.log(res)
-        setLoading(false);
-        setName("");
-        toast.success(`"${res.data.name}" is created`);
-        loadDiets();
+        setLoading(false)
+        setName('')
+        toast.success(`"${res.data.name}" is created`)
+        loadDiets()
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        if (err.response.status === 400) toast.error(err.response.data);
-      });
-  };
+        console.log(err)
+        setLoading(false)
+        if (err.response.status === 400) toast.error(err.response.data)
+      })
+  }
 
   const handleRemove = async (slug) => {
     // let answer = window.confirm("Delete?");
     // console.log(answer, slug);
-    if (window.confirm("Delete?")) {
-      setLoading(true);
+    if (window.confirm('Delete?')) {
+      setLoading(true)
       removeDiet(slug, user.token)
         .then((res) => {
-          setLoading(false);
-          toast.error(`${res.data.name} deleted`);
-          loadDiets();
+          setLoading(false)
+          toast.error(`${res.data.name} deleted`)
+          loadDiets()
         })
         .catch((err) => {
           if (err.response.status === 400) {
-            setLoading(false);
-            toast.error(err.response.data);
+            setLoading(false)
+            toast.error(err.response.data)
           }
-        });
+        })
     }
-  };
+  }
 
-  //step 4
-  const searched = (keyword) => (d) => d.name.toLowerCase().includes(keyword);
+  // step 4
+  const searched = (keyword) => (d) => d.name.toLowerCase().includes(keyword)
 
   return (
     <div className="container-fluid">
@@ -79,11 +79,13 @@ const DietCreate = () => {
           <AdminNav />
         </div>
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-danger">Loading..</h4>
-          ) : (
+              )
+            : (
             <h4>Create diet</h4>
-          )}
+              )}
           <DietForm
             handleSubmit={handleSubmit}
             name={name}
@@ -113,7 +115,7 @@ const DietCreate = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DietCreate;
+export default DietCreate

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getSubs } from "../../functions/sub";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { getSubs } from '../../functions/sub'
 
 const SubList = () => {
-  const [subs, setSubs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [subs, setSubs] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getSubs().then((res) => {
-      setSubs(res.data);
-      setLoading(false);
-    });
-  }, []);
+      setSubs(res.data)
+      setLoading(false)
+    })
+  }, [])
 
   const showSubs = () =>
     subs.map((s) => (
@@ -22,19 +22,21 @@ const SubList = () => {
       >
         <Link to={`/sub/${s.slug}`}>{s.name}</Link>
       </div>
-    ));
+    ))
 
   return (
     <div className="container">
       <div className="row">
-        {loading ? (
+        {loading
+          ? (
         <h4 className="text-center">Loading...</h4>
-         ) : (
-           showSubs()
-         )}
+            )
+          : (
+              showSubs()
+            )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SubList;
+export default SubList

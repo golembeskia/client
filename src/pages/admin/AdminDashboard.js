@@ -1,5 +1,5 @@
-import React from "react";
-import AdminNav from "../../components/nav/AdminNav";
+import React from 'react'
+import AdminNav from '../../components/nav/AdminNav'
 
 const AdminDashboard = () => {
   return (
@@ -14,8 +14,7 @@ const AdminDashboard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminDashboard;
-
+export default AdminDashboard

@@ -1,7 +1,7 @@
-import React from "react";
-import { Select } from "antd";
+import React from 'react'
+import { Select } from 'antd'
 
-const { Option } = Select;
+const { Option } = Select
 
 const ProductUpdateForm = ({
   handleSubmit,
@@ -22,7 +22,7 @@ const ProductUpdateForm = ({
   selectedCategory,
   selectedBrand,
   selectedDiet,
-  selectedIngredient,
+  selectedIngredient
 }) => {
   // destructure
   const {
@@ -51,8 +51,8 @@ const ProductUpdateForm = ({
     color,
     brand,
     diet,
-    ingredient,
-  } = values;
+    ingredient
+  } = values
 
   return (
     <form onSubmit={handleSubmit}>
@@ -235,7 +235,7 @@ const ProductUpdateForm = ({
       <div className="form-group">
         <label>Shipping</label>
         <select
-          value={shipping === "Yes" ? "Yes" : "No"}
+          value={shipping === 'Yes' ? 'Yes' : 'No'}
           name="shipping"
           className="form-control"
           onChange={handleChange}
@@ -294,7 +294,7 @@ const ProductUpdateForm = ({
           name="brand"
           className="form-control"
           onChange={handleBrandChange}
-          value={selectedBrand ? selectedBrand : brand._id}
+          value={selectedBrand || brand._id}
         >
           {brands.length > 0 &&
             brands.map((b) => (
@@ -311,7 +311,7 @@ const ProductUpdateForm = ({
           name="diet"
           className="form-control"
           onChange={handleDietChange}
-          value={selectedDiet ? selectedDiet : diet._id}
+          value={selectedDiet || diet._id}
         >
           {diets.length > 0 &&
             diets.map((d) => (
@@ -346,7 +346,7 @@ const ProductUpdateForm = ({
           name="ingredient"
           className="form-control"
           onChange={handleIngredientChange}
-          value={selectedIngredient ? selectedIngredient : ingredient._id}
+          value={selectedIngredient || ingredient._id}
         >
           {ingredients.length > 0 &&
             ingredients.map((d) => (
@@ -363,7 +363,7 @@ const ProductUpdateForm = ({
           name="category"
           className="form-control"
           onChange={handleCategoryChange}
-          value={selectedCategory ? selectedCategory : category._id}
+          value={selectedCategory || category._id}
         >
           {categories.length > 0 &&
             categories.map((c) => (
@@ -378,7 +378,7 @@ const ProductUpdateForm = ({
         <label>Sub Categories</label>
         <Select
           mode="multiple"
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
           placeholder="Please select"
           value={arrayOfSubs}
           onChange={(value) => setArrayOfSubs(value)}
@@ -395,7 +395,7 @@ const ProductUpdateForm = ({
       <br />
       <button className="btn btn-outline-info">Save</button>
     </form>
-  );
-};
+  )
+}
 
-export default ProductUpdateForm;
+export default ProductUpdateForm

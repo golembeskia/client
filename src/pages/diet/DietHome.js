@@ -1,42 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { getDiet } from "../../functions/diet";
-import { Link } from "react-router-dom";
-import ProductCard from "../../components/cards/ProductCard";
-import DietList from "../../components/diet/DietList";
+import React, { useState, useEffect } from 'react'
+import { getDiet } from '../../functions/diet'
+import { Link } from 'react-router-dom'
+import ProductCard from '../../components/cards/ProductCard'
+import DietList from '../../components/diet/DietList'
 
 const DietHome = ({ match }) => {
-  const [diet, setDiet] = useState({});
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [diet, setDiet] = useState({})
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
 
-  const { slug } = match.params;
+  const { slug } = match.params
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getDiet(slug).then((res) => {
-      console.log(JSON.stringify(res.data, null, 4));
-      setDiet(res.data.diet);
-      setProducts(res.data.products);
-      setLoading(false);
-    });
-  }, []);
+      console.log(JSON.stringify(res.data, null, 4))
+      setDiet(res.data.diet)
+      setProducts(res.data.products)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-center p-3 mt-2 mb-2 display-7 jumbotron">
               Loading...
             </h4>
-          ) : (
+              )
+            : (
             <h4
-              style={{ backgroundColor: "#69c0ff", color: "white" }}
+                style={{ backgroundColor: '#69c0ff', color: 'white' }}
               className="text-center p-3 mt-2 mb-2 display-7 jumbotron"
             >
               {products.length} Products in "{diet.name}" diet
             </h4>
-          )}
+              )}
         </div>
       </div>
 
@@ -48,7 +50,7 @@ const DietHome = ({ match }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DietHome;
+export default DietHome

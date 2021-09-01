@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const DietForm = ({handleSubmit, name, setName}) => (
+const DietForm = ({ handleSubmit, name, setName }) => (
   <form onSubmit={handleSubmit}>
     <div className="form-group">
       <label>Name</label>
@@ -16,6 +16,6 @@ const DietForm = ({handleSubmit, name, setName}) => (
       <button className="btn btn-outline-primary">Save</button>
     </div>
   </form>
-);
+)
 
-export default DietForm;
+export default DietForm

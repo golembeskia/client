@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Menu, Badge } from "antd";
+import React, { useState } from 'react'
+import { Menu, Badge } from 'antd'
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -8,36 +8,36 @@ import {
   LogoutOutlined,
   ShoppingOutlined,
   ShoppingCartOutlined, SyncOutlined
-} from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import firebase from "firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Search from "../forms/Search";
+} from '@ant-design/icons'
+import { Link, useHistory } from 'react-router-dom'
+import firebase from 'firebase'
+import { useDispatch, useSelector } from 'react-redux'
 
-const { SubMenu, Item } = Menu;
+import Search from '../forms/Search'
+
+const { SubMenu, Item } = Menu
 
 const Header = () => {
-  const [current, setCurrent] = useState("home");
+  const [current, setCurrent] = useState('home')
 
-  let dispatch = useDispatch();
-  let { user, cart, compare } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch()
+  const { user, cart, compare } = useSelector((state) => ({ ...state }))
 
-  let history = useHistory();
+  const history = useHistory()
 
   const handleClick = (e) => {
     // console.log(e.key);
-    setCurrent(e.key);
-  };
+    setCurrent(e.key)
+  }
 
   const logout = () => {
-    firebase.auth().signOut();
+    firebase.auth().signOut()
     dispatch({
-      type: "LOGOUT",
-      payload: null,
-    });
-    history.push("/login");
-  };
+      type: 'LOGOUT',
+      payload: null
+    })
+    history.push('/login')
+  }
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
@@ -51,7 +51,7 @@ const Header = () => {
 
       <Item
         key="cart"
-        icon={<ShoppingCartOutlined style={{fontSize:"28px"}} />}
+        icon={<ShoppingCartOutlined style={{ fontSize: '28px' }} />}
         className="text-danger float-end"
       >
         <Link to="/cart">List
@@ -61,7 +61,7 @@ const Header = () => {
 
       <Item
         key="compare"
-        icon={<SyncOutlined style={{fontSize:"22px"}} />}
+        icon={<SyncOutlined style={{ fontSize: '22px' }} />}
         className="text-success float-end"
       >
         <Link to="/compare">Compare
@@ -84,16 +84,16 @@ const Header = () => {
       {user && (
         <SubMenu
           icon={<SettingOutlined />}
-          title={user.email && user.email.split("@")[0]}
+          title={user.email && user.email.split('@')[0]}
           className="float-end"
         >
-          {user && user.role === "subscriber" && (
+          {user && user.role === 'subscriber' && (
             <Item>
               <Link to="/user/history">Dashboard</Link>
             </Item>
           )}
 
-          {user && user.role === "admin" && (
+          {user && user.role === 'admin' && (
             <Item>
               <Link to="/admin/dashboard">Dashboard</Link>
             </Item>
@@ -108,7 +108,7 @@ const Header = () => {
         <Search />
       </span>
     </Menu>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

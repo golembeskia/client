@@ -1,21 +1,21 @@
-import React from "react";
-import { Card } from "antd";
-import laptop from "../../images/placeholder.png";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Card } from 'antd'
+import laptop from '../../images/placeholder.png'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
-const { Meta } = Card;
+const { Meta } = Card
 
 const AdminProductCard = ({ product, handleRemove }) => {
   // destructure
-  const { title, description, images, slug } = product;
+  const { title, description, images, slug } = product
 
   return (
-    <Card bordered style={{border: '2px solid #55C1F5', borderRadius: '10px'}}
+    <Card bordered style={{ border: '2px solid #55C1F5', borderRadius: '10px' }}
       cover={
         <img
           src={images && images.length ? images[0].url : laptop}
-          style={{ width: "150px", height: "150px", objectFit: "cover" }}
+          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
           className="p-1"
         />
       }
@@ -26,7 +26,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
         <DeleteOutlined
           onClick={() => handleRemove(slug)}
           className="text-danger"
-        />,
+        />
       ]}
     >
       <Meta
@@ -34,7 +34,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
         description={`${description && description.substring(0, 40)}...`}
       />
     </Card>
-  );
-};
+  )
+}
 
-export default AdminProductCard;
+export default AdminProductCard

@@ -362,95 +362,95 @@
 
 // export default ProductTable;
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { Tooltip } from "antd";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { Tooltip } from 'antd'
 import {
   EyeOutlined,
   ShoppingCartOutlined,
-  SyncOutlined,
-} from "@ant-design/icons";
-import _ from "lodash";
-import ModalImage from "react-modal-image";
-import laptop from "../../images/placeholder.png";
-import { showAverage } from "../../functions/ratingTable";
-import ProductTableChart from "./ProductTableAd";
+  SyncOutlined
+} from '@ant-design/icons'
+import _ from 'lodash'
+import ModalImage from 'react-modal-image'
+import laptop from '../../images/placeholder.png'
+import { showAverage } from '../../functions/ratingTable'
+import ProductTableChart from './ProductTableAd'
 
 const ProductTable = ({ product }) => {
-  const [tooltip, setTooltip] = useState("Click to add");
-  const [products, setProducts] = useState([]);
+  const [tooltip, setTooltip] = useState('Click to add')
+  const [products, setProducts] = useState([])
   // redux
   // const { user, cart } = useSelector((state) => ({ ...state }));
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleAddToCart = () => {
     // create cart array
-    let cart = [];
-    if (typeof window !== "undefined") {
+    let cart = []
+    if (typeof window !== 'undefined') {
       // if cart is in local storage GET it
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
       }
       // push new product to cart
       cart.push({
         ...product,
-        count: 1,
-      });
+        count: 1
+      })
       // remove duplicates
-      let unique = _.uniqWith(cart, _.isEqual);
+      const unique = _.uniqWith(cart, _.isEqual)
       // save to local storage
       // console.log('unique', unique)
-      localStorage.setItem("cart", JSON.stringify(unique));
+      localStorage.setItem('cart', JSON.stringify(unique))
       // show tooltip
-      setTooltip("Added");
+      setTooltip('Added')
 
       // add to redux state
       dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
-      //show car items in side drawer
+        type: 'ADD_TO_CART',
+        payload: unique
+      })
+      // show car items in side drawer
       dispatch({
-        type: "SET_VISIBLE",
-        payload: true,
-      });
+        type: 'SET_VISIBLE',
+        payload: true
+      })
     }
-  };
+  }
 
   const handleAddToCompare = () => {
     // create compare array
-    let compare = [];
-    if (typeof window !== "undefined") {
+    let compare = []
+    if (typeof window !== 'undefined') {
       // if cart is in local storage GET it
-      if (localStorage.getItem("compare")) {
-        compare = JSON.parse(localStorage.getItem("compare"));
+      if (localStorage.getItem('compare')) {
+        compare = JSON.parse(localStorage.getItem('compare'))
       }
       // push new product to compare
       compare.push({
         ...product,
-        count: 1,
-      });
+        count: 1
+      })
       // remove duplicates
-      let unique = _.uniqWith(compare, _.isEqual);
+      const unique = _.uniqWith(compare, _.isEqual)
       // save to local storage
       // console.log('unique', unique)
-      localStorage.setItem("compare", JSON.stringify(unique));
+      localStorage.setItem('compare', JSON.stringify(unique))
       // show tooltip
-      setTooltip("Added");
+      setTooltip('Added')
 
       // add to redux state
       dispatch({
-        type: "ADD_TO_COMPARE",
-        payload: unique,
-      });
-      //show compare items in side drawer
+        type: 'ADD_TO_COMPARE',
+        payload: unique
+      })
+      // show compare items in side drawer
       // dispatch({
       //   type: "SET_VISIBLE",
       //   payload: true,
       // });
     }
-  };
+  }
 
   const {
     images,
@@ -469,45 +469,49 @@ const ProductTable = ({ product }) => {
     servingsize,
     saturatedfat,
     dietaryfiber,
-    diet,
-  } = product;
+    diet
+  } = product
 
   const showTable = () => (
     <table className="table table-bordered">
       <thead className="thead-light">
         <tr>
-          <th scope="col" style={{ width: "280px" }}>
+          <th scope="col" style={{ width: '280px' }}>
             <td>
               <div
                 style={{
-                  width: "100px",
-                  height: "auto",
-                  float: "left",
-                  paddingRight: "10px",
+                  width: '100px',
+                  height: 'auto',
+                  float: 'left',
+                  paddingRight: '10px'
                 }}
               >
-                {product.images.length ? (
+                {product.images.length
+                  ? (
                   <ModalImage
                     small={product.images[0].url}
                     large={product.images[0].url}
                   />
-                ) : (
+                    )
+                  : (
                   <ModalImage small={laptop} large={laptop} />
-                )}
+                    )}
               </div>
               <a>{product.title}</a>
               <div>
-                {product && product.ratings && product.ratings.length > 0 ? (
-                  showAverage(product)
-                ) : (
+                {product && product.ratings && product.ratings.length > 0
+                  ? (
+                      showAverage(product)
+                    )
+                  : (
                   <a className="text-left pt-1 pb-3">No rating yet</a>
-                )}
+                    )}
               </div>
               <a>
                 <Link to={`/product/${slug}`}>
                   <EyeOutlined
                     className="text-warning"
-                    style={{ paddingRight: "10px" }}
+                    style={{ paddingRight: '10px' }}
                   />
                 </Link>
               </a>
@@ -516,7 +520,7 @@ const ProductTable = ({ product }) => {
                   <a onClick={handleAddToCart}>
                     <ShoppingCartOutlined
                       className="text-danger"
-                      style={{ paddingRight: "10px" }}
+                      style={{ paddingRight: '10px' }}
                     />
                   </a>
                 </Tooltip>
@@ -526,29 +530,29 @@ const ProductTable = ({ product }) => {
                   <a onClick={handleAddToCompare}>
                     <SyncOutlined
                       className="text-success"
-                      style={{ paddingRight: "5px" }}
+                      style={{ paddingRight: '5px' }}
                     />
                   </a>
                 </Tooltip>
               </a>
             </td>
           </th>
-          <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '90px', paddingBottom: '50px' }}>
             Price<td>${product.price}</td>
           </th>
-          <th scope="col" style={{ width: "130px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '130px', paddingBottom: '50px' }}>
             Serving Size<td>{product.servingsize}</td>
           </th>
-          <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '90px', paddingBottom: '50px' }}>
             Calories<td>{product.calories}</td>
           </th>
-          <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '90px', paddingBottom: '50px' }}>
             Carbs<td>{product.carbohydrates}</td>
           </th>
-          <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '90px', paddingBottom: '50px' }}>
             Fat<td>{product.fat}</td>
           </th>
-          <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
+          <th scope="col" style={{ width: '90px', paddingBottom: '50px' }}>
             Protein<td>{product.protein}</td>
           </th>
           {/* <th scope="col" style={{ width: "90px", paddingBottom: "50px" }}>
@@ -579,9 +583,9 @@ const ProductTable = ({ product }) => {
     //       <ProductTableChart key={p._id} product={p} />
     //     ))}
     //   </table>
-  );
+  )
 
-  return showTable();
-};
+  return showTable()
+}
 
-export default ProductTable;
+export default ProductTable

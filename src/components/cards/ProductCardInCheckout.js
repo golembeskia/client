@@ -1,19 +1,19 @@
-import React from "react";
-import ModalImage from "react-modal-image";
-import laptop from "../../images/placeholder.png";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import React from 'react'
+import ModalImage from 'react-modal-image'
+import laptop from '../../images/placeholder.png'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import {
   BranchesOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
-  CloseOutlined,
-} from "@ant-design/icons";
+  CloseOutlined
+} from '@ant-design/icons'
 
 const ProductCardInCheckout = ({ p }) => {
-  const { price, brand, brands, title, diet, category, subs } = p;
+  const { price, brand, brands, title, diet, category, subs } = p
   // const colors = ["Black", "Brown", "Silver", "White", "Blue"];
-  let dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // const handleColorChange = (e) => {
   //   console.log("color changed", e.target.value);
@@ -71,37 +71,39 @@ const ProductCardInCheckout = ({ p }) => {
 
   const handleRemove = () => {
     // console.log(p._id, "to remove");
-    let cart = [];
+    let cart = []
 
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
       }
       // [1,2,3,4,5]
       cart.map((product, i) => {
         if (product._id === p._id) {
-          cart.splice(i, 1);
+          cart.splice(i, 1)
         }
-      });
+      })
 
-      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem('cart', JSON.stringify(cart))
       dispatch({
-        type: "ADD_TO_CART",
-        payload: cart,
-      });
+        type: 'ADD_TO_CART',
+        payload: cart
+      })
     }
-  };
+  }
 
   return (
     <tbody>
       <tr>
         <td>
-          <div style={{ width: "100px", height: "auto" }}>
-            {p.images.length ? (
+          <div style={{ width: '100px', height: 'auto' }}>
+            {p.images.length
+              ? (
               <ModalImage small={p.images[0].url} large={p.images[0].url} />
-            ) : (
+                )
+              : (
               <ModalImage small={laptop} large={laptop} />
-            )}
+                )}
           </div>
         </td>
         <td>{brand.name}</td>
@@ -163,7 +165,7 @@ const ProductCardInCheckout = ({ p }) => {
         </td>
       </tr>
     </tbody>
-  );
-};
+  )
+}
 
-export default ProductCardInCheckout;
+export default ProductCardInCheckout

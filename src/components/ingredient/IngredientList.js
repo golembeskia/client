@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getIngredients } from "../../functions/ingredient";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { getIngredients } from '../../functions/ingredient'
 
 const IngredientList = () => {
-  const [ingredients, setIngredients] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [ingredients, setIngredients] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getIngredients().then((c) => {
-      setIngredients(c.data);
-      setLoading(false);
-    });
-  }, []);
+      setIngredients(c.data)
+      setLoading(false)
+    })
+  }, [])
 
   const showIngredients = () =>
     ingredients.map((c) => (
@@ -22,19 +22,21 @@ const IngredientList = () => {
       >
         <Link to={`/ingredient/${c.slug}`}>{c.name}</Link>
       </div>
-    ));
+    ))
 
   return (
     <div className="container">
       <div className="row">
-        {loading ? (
+        {loading
+          ? (
           <h4 className="text-center">Loading...</h4>
-        ) : (
-          showIngredients()
-        )}
+            )
+          : (
+              showIngredients()
+            )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default IngredientList;
+export default IngredientList

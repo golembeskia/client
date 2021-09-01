@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { updateBrand, getBrand } from "../../../functions/brand";
-import BrandForm from "../../../components/forms/BrandForm";
+import React, { useState, useEffect } from 'react'
+import AdminNav from '../../../components/nav/AdminNav'
+import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
+import { updateBrand, getBrand } from '../../../functions/brand'
+import BrandForm from '../../../components/forms/BrandForm'
 
 const BrandUpdate = ({ history, match }) => {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }))
 
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    loadBrand();
-  }, []);
+    loadBrand()
+  }, [])
 
   const loadBrand = () =>
-    getBrand(match.params.slug).then((b) => setName(b.data.brand.name));
+    getBrand(match.params.slug).then((b) => setName(b.data.brand.name))
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(name);
-    setLoading(true);
+    setLoading(true)
     updateBrand(match.params.slug, { name }, user.token)
       .then((res) => {
         // console.log(res)
-        setLoading(false);
-        setName("");
-        toast.success(`"${res.data.name}" is updated`);
-        history.push("/admin/brand");
+        setLoading(false)
+        setName('')
+        toast.success(`"${res.data.name}" is updated`)
+        history.push('/admin/brand')
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        if (err.response.status === 400) toast.error(err.response.data);
-      });
-  };
+        console.log(err)
+        setLoading(false)
+        if (err.response.status === 400) toast.error(err.response.data)
+      })
+  }
 
   return (
     <div className="container-fluid">
@@ -44,11 +44,13 @@ const BrandUpdate = ({ history, match }) => {
           <AdminNav />
         </div>
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-danger">Loading..</h4>
-          ) : (
+              )
+            : (
             <h4>Update brand</h4>
-          )}
+              )}
 
            <BrandForm
             handleSubmit={handleSubmit}
@@ -60,7 +62,7 @@ const BrandUpdate = ({ history, match }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BrandUpdate;
+export default BrandUpdate

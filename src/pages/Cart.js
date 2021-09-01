@@ -1,39 +1,39 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import ProductCardInCheckout from '../components/cards/ProductCardInCheckout'
 
 const Cart = () => {
-  const { cart, user } = useSelector((state) => ({ ...state }));
-  const dispatch = useDispatch();
+  const { cart, user } = useSelector((state) => ({ ...state }))
+  const dispatch = useDispatch()
 
   const saveOrderToDb = () => {
     //
-  };
+  }
 
   const getTotalPrice = () => {
     return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.price;
-    }, 0);
-  };
+      return currentValue + nextValue.count * nextValue.price
+    }, 0)
+  }
 
   const getTotalCarbs = () => {
     return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.carbohydrates;
-    }, 0);
-  };
+      return currentValue + nextValue.count * nextValue.carbohydrates
+    }, 0)
+  }
 
   const getTotalFat = () => {
     return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.fat;
-    }, 0);
-  };
+      return currentValue + nextValue.count * nextValue.fat
+    }, 0)
+  }
 
   const getTotalProtein = () => {
     return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.protein;
-    }, 0);
-  };
+      return currentValue + nextValue.count * nextValue.protein
+    }, 0)
+  }
 
   const showCartItems = () => (
     <table className="table table-bordered">
@@ -54,9 +54,9 @@ const Cart = () => {
       </thead>
     {cart.map((p) => (
         <ProductCardInCheckout key={p._id} p={p}/>
-      ))}
+    ))}
     </table>
-  );
+  )
 
   return (
     <div className="container-fluid pt-2">
@@ -64,13 +64,15 @@ const Cart = () => {
         <div className="col-md-8">
           <h4>Shopping List / {cart.length} Product</h4>
 
-          {!cart.length ? (
+          {!cart.length
+            ? (
             <p>
               No products in cart. <Link to="/shop">Continue Search.</Link>
             </p>
-          ) : (
-            showCartItems()
-          )}
+              )
+            : (
+                showCartItems()
+              )}
         </div>
         <div className="col-md-4">
           <h4>Summary</h4>
@@ -80,7 +82,7 @@ const Cart = () => {
             <div key={i}>
               <p>
                 {/* {c.title} x {c.count} = ${c.price * c.count} */}
-                {c.title} 
+                {c.title}
               </p>
             </div>
           ))}
@@ -90,7 +92,8 @@ const Cart = () => {
           Total Fat: <b>{getTotalFat()}</b><hr />
           Total Protein: <b>{getTotalProtein()}</b><hr />
           <hr />
-          {user ? (
+          {user
+            ? (
             <button
               onClick={saveOrderToDb}
               className="btn btn-sm btn-primary mt-2"
@@ -98,23 +101,24 @@ const Cart = () => {
             >
               Send me shopping list
             </button>
-          ) : (
+              )
+            : (
             <button className="btn btn-sm btn-primary mt-2">
               <Link
                 to={{
-                  pathname: "/login",
-                  state: { from: "cart" },
+                  pathname: '/login',
+                  state: { from: 'cart' }
                 }}
               >
                 Login to Checkout
               </Link>
             </button>
-          )}
+              )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 //   const getTotal = () => {
 //     return cart.reduce((currentValue, nextValue) => {
@@ -201,4 +205,4 @@ const Cart = () => {
 //   );
 // };
 
-export default Cart;
+export default Cart

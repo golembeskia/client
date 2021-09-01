@@ -1,5 +1,5 @@
-import React from "react";
-import StarRating from "react-star-ratings";
+import React from 'react'
+import StarRating from 'react-star-ratings'
 
 const Star = ({ starClick, numberOfStars }) => (
   <>
@@ -13,6 +13,6 @@ const Star = ({ starClick, numberOfStars }) => (
     />
     <br />
   </>
-);
+)
 
-export default Star;
+export default Star

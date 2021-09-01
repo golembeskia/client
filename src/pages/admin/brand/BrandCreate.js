@@ -1,76 +1,76 @@
-import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import AdminNav from '../../../components/nav/AdminNav'
+import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import {
   createBrand,
   getBrands,
-  removeBrand,
-} from "../../../functions/brand";
-import { Link } from "react-router-dom";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import BrandForm from "../../../components/forms/BrandForm";
-import LocalSearch from "../../../components/forms/LocalSearch";
+  removeBrand
+} from '../../../functions/brand'
+import { Link } from 'react-router-dom'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import BrandForm from '../../../components/forms/BrandForm'
+import LocalSearch from '../../../components/forms/LocalSearch'
 
 const BrandCreate = () => {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }))
 
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [brands, setBrands] = useState([]);
+  const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [brands, setBrands] = useState([])
 
-  //searching/filtering
-  //step 1
-  const [keyword, setKeyword] = useState("");
+  // searching/filtering
+  // step 1
+  const [keyword, setKeyword] = useState('')
 
   useEffect(() => {
-    loadBrands();
-  }, []);
+    loadBrands()
+  }, [])
 
   const loadBrands = () =>
-    getBrands().then((b) => setBrands(b.data));
+    getBrands().then((b) => setBrands(b.data))
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(name);
-    setLoading(true);
+    setLoading(true)
     createBrand({ name }, user.token)
       .then((res) => {
         // console.log(res)
-        setLoading(false);
-        setName("");
-        toast.success(`"${res.data.name}" is created`);
-        loadBrands();
+        setLoading(false)
+        setName('')
+        toast.success(`"${res.data.name}" is created`)
+        loadBrands()
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        if (err.response.status === 400) toast.error(err.response.data);
-      });
-  };
+        console.log(err)
+        setLoading(false)
+        if (err.response.status === 400) toast.error(err.response.data)
+      })
+  }
 
   const handleRemove = async (slug) => {
     // let answer = window.confirm("Delete?");
     // console.log(answer, slug);
-    if (window.confirm("Delete?")) {
-      setLoading(true);
+    if (window.confirm('Delete?')) {
+      setLoading(true)
       removeBrand(slug, user.token)
         .then((res) => {
-          setLoading(false);
-          toast.error(`${res.data.name} deleted`);
-          loadBrands();
+          setLoading(false)
+          toast.error(`${res.data.name} deleted`)
+          loadBrands()
         })
         .catch((err) => {
           if (err.response.status === 400) {
-            setLoading(false);
-            toast.error(err.response.data);
+            setLoading(false)
+            toast.error(err.response.data)
           }
-        });
+        })
     }
-  };
+  }
 
-  //step 4
-  const searched = (keyword) => (b) => b.name.toLowerCase().includes(keyword);
+  // step 4
+  const searched = (keyword) => (b) => b.name.toLowerCase().includes(keyword)
 
   return (
     <div className="container-fluid">
@@ -79,11 +79,13 @@ const BrandCreate = () => {
           <AdminNav />
         </div>
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-danger">Loading..</h4>
-          ) : (
+              )
+            : (
             <h4>Create brand</h4>
-          )}
+              )}
           <BrandForm
             handleSubmit={handleSubmit}
             name={name}
@@ -113,7 +115,7 @@ const BrandCreate = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BrandCreate;
+export default BrandCreate

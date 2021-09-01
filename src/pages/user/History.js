@@ -1,5 +1,5 @@
-import React from "react";
-import UserNav from "../../components/nav/UserNav";
+import React from 'react'
+import UserNav from '../../components/nav/UserNav'
 
 const History = () => (
   <div className="container-fluid">
@@ -10,6 +10,6 @@ const History = () => (
       <div className="col">user history page</div>
     </div>
   </div>
-);
+)
 
-export default History;
+export default History

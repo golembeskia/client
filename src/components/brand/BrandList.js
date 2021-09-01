@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getBrands } from "../../functions/brand";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { getBrands } from '../../functions/brand'
 
 const BrandList = () => {
-  const [brands, setBrands] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [brands, setBrands] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getBrands().then((c) => {
-      setBrands(c.data);
-      setLoading(false);
-    });
-  }, []);
+      setBrands(c.data)
+      setLoading(false)
+    })
+  }, [])
 
   const showBrands = () =>
     brands.map((c) => (
@@ -22,19 +22,21 @@ const BrandList = () => {
       >
         <Link to={`/brand/${c.slug}`}>{c.name}</Link>
       </div>
-    ));
+    ))
 
   return (
     <div className="container">
       <div className="row">
-        {loading ? (
+        {loading
+          ? (
           <h4 className="text-center">Loading...</h4>
-        ) : (
-          showBrands()
-        )}
+            )
+          : (
+              showBrands()
+            )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BrandList;
+export default BrandList

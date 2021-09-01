@@ -1,83 +1,83 @@
-import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Home from "./pages/Home";
-import Header from "./components/nav/Header";
-import SideDrawer from "./components/drawer/SideDrawer";
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
+import Home from './pages/Home'
+import Header from './components/nav/Header'
+import SideDrawer from './components/drawer/SideDrawer'
 
-import RegisterComplete from "./pages/auth/RegisterComplete";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import History from "./pages/user/History";
-import UserRoute from "./components/routes/UserRoute";
-import AdminRoute from "./components/routes/AdminRoute";
-import Password from "./pages/user/Password";
-import Wishlist from "./pages/user/Wishlist";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import SubCreate from "./pages/admin/sub/SubCreate";
-import SubUpdate from "./pages/admin/sub/SubUpdate";
-import ProductCreate from "./pages/admin/product/ProductCreate";
-import AllProducts from "./pages/admin/product/AllProducts";
-import ProductUpdate from "./pages/admin/product/ProductUpdate";
-import Product from "./pages/Product";
-import SubHome from "./pages/sub/SubHome";
-import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
-import Compare from "./pages/Compare";
+import RegisterComplete from './pages/auth/RegisterComplete'
+import ForgotPassword from './pages/auth/ForgotPassword'
+import History from './pages/user/History'
+import UserRoute from './components/routes/UserRoute'
+import AdminRoute from './components/routes/AdminRoute'
+import Password from './pages/user/Password'
+import Wishlist from './pages/user/Wishlist'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import SubCreate from './pages/admin/sub/SubCreate'
+import SubUpdate from './pages/admin/sub/SubUpdate'
+import ProductCreate from './pages/admin/product/ProductCreate'
+import AllProducts from './pages/admin/product/AllProducts'
+import ProductUpdate from './pages/admin/product/ProductUpdate'
+import Product from './pages/Product'
+import SubHome from './pages/sub/SubHome'
+import Shop from './pages/Shop'
+import Cart from './pages/Cart'
+import Compare from './pages/Compare'
 
-import { auth } from "./firebase";
-import { useDispatch } from "react-redux";
-import { currentUser } from "./functions/auth";
+import { auth } from './firebase'
+import { useDispatch } from 'react-redux'
+import { currentUser } from './functions/auth'
 
-import CategoryCreate from "./pages/admin/category/CategoryCreate";
-import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
+import CategoryCreate from './pages/admin/category/CategoryCreate'
+import CategoryUpdate from './pages/admin/category/CategoryUpdate'
 
-import BrandCreate from "./pages/admin/brand/BrandCreate";
-import BrandUpdate from "./pages/admin/brand/BrandUpdate";
+import BrandCreate from './pages/admin/brand/BrandCreate'
+import BrandUpdate from './pages/admin/brand/BrandUpdate'
 
-import DietCreate from "./pages/admin/diet/DietCreate";
-import DietUpdate from "./pages/admin/diet/DietUpdate";
+import DietCreate from './pages/admin/diet/DietCreate'
+import DietUpdate from './pages/admin/diet/DietUpdate'
 
-import IngredientCreate from "./pages/admin/ingredient/IngredientCreate";
-import IngredientUpdate from "./pages/admin/ingredient/IngredientUpdate";
+import IngredientCreate from './pages/admin/ingredient/IngredientCreate'
+import IngredientUpdate from './pages/admin/ingredient/IngredientUpdate'
 
-import CategoryHome from "./pages/category/CategoryHome";
-import BrandHome from "./pages/brand/BrandHome";
-import DietHome from "./pages/diet/DietHome";
-import IngredientHome from "./pages/ingredient/IngredientHome";
+import CategoryHome from './pages/category/CategoryHome'
+import BrandHome from './pages/brand/BrandHome'
+import DietHome from './pages/diet/DietHome'
+import IngredientHome from './pages/ingredient/IngredientHome'
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // to check firebase auth state
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
-        const idTokenResult = await user.getIdTokenResult();
+        const idTokenResult = await user.getIdTokenResult()
         // console.log("user", user);
 
         currentUser(idTokenResult.token)
           .then((res) => {
             dispatch({
-              type: "LOGGED_IN_USER",
+              type: 'LOGGED_IN_USER',
               payload: {
                 name: res.data.name,
                 email: res.data.email,
                 token: idTokenResult.token,
                 role: res.data.role,
-                _id: res.data._id,
-              },
-            });
+                _id: res.data._id
+              }
+            })
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
       }
-    });
+    })
     // cleanup
-    return () => unsubscribe();
-  }, [dispatch]);
+    return () => unsubscribe()
+  }, [dispatch])
 
   return (
     <>
@@ -138,8 +138,7 @@ const App = () => {
         <Route exact path="/compare" component={Compare} />
       </Switch>
     </>
-  );
-};
+  )
+}
 
-export default App;
-
+export default App

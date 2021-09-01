@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const getWishlist = async (authtoken) =>
   await axios.get(`${process.env.REACT_APP_API}/user/wishlist`, {
     headers: {
-      authtoken,
-    },
-  });
+      authtoken
+    }
+  })
 
 export const removeWishlist = async (productId, authtoken) =>
   await axios.put(
@@ -13,10 +13,10 @@ export const removeWishlist = async (productId, authtoken) =>
     {},
     {
       headers: {
-        authtoken,
-      },
+        authtoken
+      }
     }
-  );
+  )
 
 export const addToWishlist = async (productId, authtoken) =>
   await axios.post(
@@ -24,7 +24,7 @@ export const addToWishlist = async (productId, authtoken) =>
     { productId },
     {
       headers: {
-        authtoken,
-      },
+        authtoken
+      }
     }
-  );
+  )

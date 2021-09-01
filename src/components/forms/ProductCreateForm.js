@@ -1,7 +1,7 @@
-import React from "react";
-import { Select } from "antd";
+import React from 'react'
+import { Select } from 'antd'
 
-const { Option } = Select;
+const { Option } = Select
 
 const ProductCreateForm = ({
   handleSubmit,
@@ -12,7 +12,7 @@ const ProductCreateForm = ({
   handleBrandChange,
   handleDietChange,
   subOptions,
-  showSub,
+  showSub
 }) => {
   // destructure
   const {
@@ -45,8 +45,8 @@ const ProductCreateForm = ({
     diets,
     ingredient,
     ingredients,
-    color,
-  } = values;
+    color
+  } = values
 
   return (
     <form onSubmit={handleSubmit}>
@@ -312,7 +312,7 @@ const ProductCreateForm = ({
         <label>Diet</label>
         <Select
           mode="multiple"
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
           placeholder="Please select"
           // value={diet}
           // onChange={handleDietChange}
@@ -331,7 +331,7 @@ const ProductCreateForm = ({
         <label>Ingredient</label>
         <Select
           mode="multiple"
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
           placeholder="Please select"
           // value={ingredient}
           // onChange={handleDietChange}
@@ -368,7 +368,7 @@ const ProductCreateForm = ({
           <label>Sub Categories</label>
           <Select
             mode="multiple"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             placeholder="Please select"
             value={subs}
             onChange={(value) => setValues({ ...values, subs: value })}
@@ -386,7 +386,7 @@ const ProductCreateForm = ({
       <br />
       <button className="btn btn-outline-info">Save</button>
     </form>
-  );
-};
+  )
+}
 
-export default ProductCreateForm;
+export default ProductCreateForm

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AdminNav = () => (
   <nav>
@@ -65,6 +65,6 @@ const AdminNav = () => (
       </li>
     </ul>
   </nav>
-);
+)
 
-export default AdminNav;
+export default AdminNav

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
 const LocalSearch = ({ keyword, setKeyword }) => {
   const handleSearchChange = (e) => {
-    e.preventDefault();
-    setKeyword(e.target.value.toLowerCase());
-  };
+    e.preventDefault()
+    setKeyword(e.target.value.toLowerCase())
+  }
 
   return (
     <input
@@ -14,7 +14,7 @@ const LocalSearch = ({ keyword, setKeyword }) => {
       onChange={handleSearchChange}
       className="form-control mb-2 mt-2"
     />
-  );
-};
+  )
+}
 
-export default LocalSearch;
+export default LocalSearch

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ProductListItems = ({ product }) => {
   const {
@@ -23,13 +23,13 @@ const ProductListItems = ({ product }) => {
     diet,
     ingredient,
     quantity,
-    sold,
-  } = product;
+    sold
+  } = product
 
   return (
     <ul className="list-group">
       <li className="list-group-item">
-        Price:{" "}
+        Price:{' '}
         <span className="label label-default label-pill float-end">
           ${price}
         </span>
@@ -37,7 +37,7 @@ const ProductListItems = ({ product }) => {
 
       {category && (
         <li className="list-group-item">
-          Category:{" "}
+          Category:{' '}
           <Link
             to={`/category/${category.slug}`}
             className="label label-default label-pill float-end"
@@ -49,7 +49,7 @@ const ProductListItems = ({ product }) => {
 
       {subs && (
         <li className="list-group-item">
-          Sub categories:{" "}
+          Sub categories:{' '}
           {subs.map((s) => (
             <Link
               key={s._id}
@@ -85,7 +85,7 @@ const ProductListItems = ({ product }) => {
 
       {brand && (
         <li className="list-group-item">
-          Brand:{" "}
+          Brand:{' '}
           <Link
             to={`/brand/${brand.slug}`}
             className="label label-default label-pill float-end"
@@ -109,7 +109,7 @@ const ProductListItems = ({ product }) => {
 
       {diet && (
         <li className="list-group-item">
-          Diet:{" "}
+          Diet:{' '}
           {diet.map((d) => (
             <Link
               key={d._id}
@@ -123,75 +123,75 @@ const ProductListItems = ({ product }) => {
       )}
 
       <li className="list-group-item">
-        Serving Size:{" "}
+        Serving Size:{' '}
         <span className="label label-default label-pill float-end">
           {servingsize}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Calories:{" "}
+        Calories:{' '}
         <span className="label label-default label-pill float-end">
           {calories}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Protein:{" "}
+        Protein:{' '}
         <span className="label label-default label-pill float-end">
           {protein}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Total Carbohydrates:{" "}
+        Total Carbohydrates:{' '}
         <span className="label label-default label-pill float-end">
           {carbohydrates}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Dietary Fiber:{" "}
+        Dietary Fiber:{' '}
         <span className="label label-default label-pill float-end">
           {dietaryfiber}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Total Sugar:{" "}
+        Total Sugar:{' '}
         <span className="label label-default label-pill float-end">
           {sugar}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Total Fat:{" "}
+        Total Fat:{' '}
         <span className="label label-default label-pill float-end">{fat}g</span>
       </li>
 
       <li className="list-group-item">
-        Trans Fat:{" "}
+        Trans Fat:{' '}
         <span className="label label-default label-pill float-end">
           {transfat}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Saturated Fat:{" "}
+        Saturated Fat:{' '}
         <span className="label label-default label-pill float-end">
           {saturatedfat}g
         </span>
       </li>
 
       <li className="list-group-item">
-        Cholesterol:{" "}
+        Cholesterol:{' '}
         <span className="label label-default label-pill float-end">
           {cholesterol}mg
         </span>
       </li>
 
       <li className="list-group-item">
-        Sodium:{" "}
+        Sodium:{' '}
         <span className="label label-default label-pill float-end">
           {sodium}mg
         </span>
@@ -211,7 +211,7 @@ const ProductListItems = ({ product }) => {
 
       {ingredient && (
         <li className="list-group-item">
-          Ingredients:{" "}
+          Ingredients:{' '}
           {ingredient.map((d) => (
             <Link
               key={d._id}
@@ -224,7 +224,7 @@ const ProductListItems = ({ product }) => {
         </li>
       )}
     </ul>
-  );
-};
+  )
+}
 
-export default ProductListItems;
+export default ProductListItems

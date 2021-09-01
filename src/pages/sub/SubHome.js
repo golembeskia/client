@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { getSub } from "../../functions/sub";
-import ProductCard from "../../components/cards/ProductCard";
+import React, { useState, useEffect } from 'react'
+import { getSub } from '../../functions/sub'
+import ProductCard from '../../components/cards/ProductCard'
 
 const SubHome = ({ match }) => {
-  const [sub, setSub] = useState({});
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [sub, setSub] = useState({})
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
 
-  const { slug } = match.params;
+  const { slug } = match.params
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getSub(slug).then((res) => {
-      console.log(JSON.stringify(res.data, null, 4));
-      setSub(res.data.sub);
-      setProducts(res.data.products);
-      setLoading(false);
-    });
-  }, []);
+      console.log(JSON.stringify(res.data, null, 4))
+      setSub(res.data.sub)
+      setProducts(res.data.products)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col">
-          {loading ? (
+          {loading
+            ? (
             <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
               Loading...
             </h4>
-          ) : (
+            )
+            : (
             <h4
-              style={{ backgroundColor: "#69c0ff", color: "white" }}
+                style={{ backgroundColor: '#69c0ff', color: 'white' }}
               className="text-center p-3 mt-2 mb-2 display-7 jumbotron"
             >
               {products.length} Products in "{sub.name}" sub category
             </h4>
-          )}
+            )}
         </div>
       </div>
 
@@ -46,7 +48,7 @@ const SubHome = ({ match }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SubHome;
+export default SubHome

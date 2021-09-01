@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getDiets } from "../../functions/diet";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { getDiets } from '../../functions/diet'
 
 const DietList = () => {
-  const [diets, setDiets] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [diets, setDiets] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getDiets().then((d) => {
-      setDiets(d.data);
-      setLoading(false);
-    });
-  }, []);
+      setDiets(d.data)
+      setLoading(false)
+    })
+  }, [])
 
   const showDiets = () =>
     diets.map((d) => (
@@ -22,19 +22,21 @@ const DietList = () => {
       >
         <Link to={`/diet/${d.slug}`}>{d.name}</Link>
       </div>
-    ));
+    ))
 
   return (
     <div className="container">
       <div className="row">
-        {loading ? (
+        {loading
+          ? (
           <h4 className="text-center">Loading...</h4>
-        ) : (
-          showDiets()
-        )}
+            )
+          : (
+              showDiets()
+            )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DietList;
+export default DietList
