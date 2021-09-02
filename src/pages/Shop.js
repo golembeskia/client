@@ -923,7 +923,7 @@
 
 /// //////////////////////////////////
 
-import React, { useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import {
   getProductsByCount,
   fetchProductsByFilter
@@ -961,6 +961,16 @@ const Shop = () => {
   const [dietIds, setDietIds] = useState([])
   const [ingredients, setIngredients] = useState([])
   const [ingredientIds, setIngredientIds] = useState([])
+  const [starNumbers, setStarNumbers] = useState([]);
+
+  //stars
+  const nums = [
+    { id: 1, starNum: 5 },
+    { id: 2, starNum: 4 },
+    { id: 3, starNum: 3 },
+    { id: 4, starNum: 2 },
+    { id: 5, starNum: 1 },
+  ];
 
   // sort
   const [sorts] = useState([
@@ -1319,25 +1329,64 @@ const Shop = () => {
   }
 
   // 9. show products by star rating
+  // const handleStarClick = (num) => {
+  //   // console.log(num);
+  //   dispatch({
+  //     type: "SEARCH_QUERY",
+  //     payload: { text: "" },
+  //   });
+
+  //   fetchProducts({ stars: num });
+  // };
+
+  // const showStars = () => (
+  //   <div className="pr-4 pl-4 pb-2">
+  //     <Star starClick={handleStarClick} numberOfStars={5} />
+  //     <Star starClick={handleStarClick} numberOfStars={4} />
+  //     <Star starClick={handleStarClick} numberOfStars={3} />
+  //     <Star starClick={handleStarClick} numberOfStars={2} />
+  //     <Star starClick={handleStarClick} numberOfStars={1} />
+  //   </div>
+  // );
+
   const handleStarClick = (num) => {
-    // console.log(num);
-    dispatch({
-      type: 'SEARCH_QUERY',
-      payload: { text: '' }
-    })
+    let inTheState = [...starNumbers];
+    let foundInState = inTheState.indexOf(num);
+    if (foundInState === -1) {
+      inTheState.push(num);
+    } else {
+      inTheState.splice(foundInState, 1);
+    }
 
-    fetchProducts({ stars: num })
-  }
+    setStarNumbers(inTheState);
+    console.log(inTheState)
+    fetchProducts({ stars: num });
 
-  const showStars = () => (
-    <div className="pr-4 pl-4 pb-2">
-      <Star starClick={handleStarClick} numberOfStars={5} />
-      <Star starClick={handleStarClick} numberOfStars={4} />
-      <Star starClick={handleStarClick} numberOfStars={3} />
-      <Star starClick={handleStarClick} numberOfStars={2} />
-      <Star starClick={handleStarClick} numberOfStars={1} />
-    </div>
-  )
+    //load all products when nothing is selected
+    if (foundInState == []) {
+      console.log(inTheState);
+      loadAllProducts([]);
+    }
+  };
+
+  const showStars = () => {
+    return (
+      <div className="pr-4 pl-4 pb-2">
+        {nums.map((num) => (
+          <Fragment key={num.id}>
+            <Star
+              starClick={() => handleStarClick(num.starNum)}
+              num={num}
+              starEmptyColor={
+                starNumbers.includes(num.starNum) ? "red" : "#fadb14"
+              }
+            />
+            <br />
+          </Fragment>
+        ))}
+      </div>
+    );
+  };
 
   // 10. sorting
   const showSorts = () =>
