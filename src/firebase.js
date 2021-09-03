@@ -1,5 +1,6 @@
-import firebase from 'firebase/app'
+import * as firebase from 'firebase'
 import 'firebase/auth'
+import 'firebase/app'
 
 // Your web app's Firebase configuration
 const config = {
