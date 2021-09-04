@@ -10,7 +10,9 @@ import {
   ShoppingCartOutlined, SyncOutlined
 } from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
-import firebase from 'firebase'
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 import { useDispatch, useSelector } from 'react-redux'
 
 import Search from '../forms/Search'

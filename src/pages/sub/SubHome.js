@@ -28,7 +28,7 @@ const SubHome = ({ match }) => {
             <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
               Loading...
             </h4>
-            )
+              )
             : (
             <h4
                 style={{ backgroundColor: '#69c0ff', color: 'white' }}
@@ -36,7 +36,7 @@ const SubHome = ({ match }) => {
             >
               {products.length} Products in "{sub.name}" sub category
             </h4>
-            )}
+              )}
         </div>
       </div>
 

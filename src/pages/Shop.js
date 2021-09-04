@@ -961,16 +961,16 @@ const Shop = () => {
   const [dietIds, setDietIds] = useState([])
   const [ingredients, setIngredients] = useState([])
   const [ingredientIds, setIngredientIds] = useState([])
-  const [starNumbers, setStarNumbers] = useState([]);
+  const [starNumbers, setStarNumbers] = useState([])
 
-  //stars
+  // stars
   const nums = [
     { id: 1, starNum: 5 },
     { id: 2, starNum: 4 },
     { id: 3, starNum: 3 },
     { id: 4, starNum: 2 },
-    { id: 5, starNum: 1 },
-  ];
+    { id: 5, starNum: 1 }
+  ]
 
   // sort
   const [sorts] = useState([
@@ -1350,24 +1350,24 @@ const Shop = () => {
   // );
 
   const handleStarClick = (num) => {
-    let inTheState = [...starNumbers];
-    let foundInState = inTheState.indexOf(num);
+    const inTheState = [...starNumbers]
+    const foundInState = inTheState.indexOf(num)
     if (foundInState === -1) {
-      inTheState.push(num);
+      inTheState.push(num)
     } else {
-      inTheState.splice(foundInState, 1);
+      inTheState.splice(foundInState, 1)
     }
 
-    setStarNumbers(inTheState);
+    setStarNumbers(inTheState)
     console.log(inTheState)
-    fetchProducts({ stars: num });
+    fetchProducts({ stars: num })
 
-    //load all products when nothing is selected
+    // load all products when nothing is selected
     if (foundInState == []) {
-      console.log(inTheState);
-      loadAllProducts([]);
+      console.log(inTheState)
+      loadAllProducts([])
     }
-  };
+  }
 
   const showStars = () => {
     return (
@@ -1378,15 +1378,15 @@ const Shop = () => {
               starClick={() => handleStarClick(num.starNum)}
               num={num}
               starEmptyColor={
-                starNumbers.includes(num.starNum) ? "red" : "#fadb14"
+                starNumbers.includes(num.starNum) ? 'red' : '#fadb14'
               }
             />
             <br />
           </Fragment>
         ))}
       </div>
-    );
-  };
+    )
+  }
 
   // 10. sorting
   const showSorts = () =>

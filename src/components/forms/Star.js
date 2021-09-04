@@ -17,11 +17,10 @@
 
 // export default Star;
 
-  
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import StarRating from 'react-star-ratings'
 
-const Star = ({starClick, num, starEmptyColor='#fadb14'}) => (
+const Star = ({ starClick, num, starEmptyColor = '#fadb14' }) => (
     <Fragment>
         <StarRating
         changeRating={() => starClick(num.starNum)}
