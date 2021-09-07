@@ -14,16 +14,10 @@ on:
       - staging
       - performanceTesting
       - patch
-  workflow_run:
-    workflows: ["Optimize-Images"]
-    types:
-      - completed
   workflow_dispatch:
-
 jobs:
   ci:   
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       matrix:
         node: ["16"]
@@ -34,10 +28,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
   
-      - name: Setting up a ${{ matrix.node-version }} Node environment
+      - name: Setting up a ${{ matrix.node }} Node environment
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
           cache: "npm"
 
       - name: Package Scanner
@@ -46,16 +40,16 @@ jobs:
           npm-package-scanner --package ./package.json --file output.json
         working-directory: ./
 
-      - name: Lint code for common issues
-        uses: github/super-linter@v4.6.2
+      # - name: Lint code for common issues
+      #   uses: github/super-linter@v4.6.2
 
       - name: Install Shelf Health
         run: npm install
 
-      - name: Initialize Code QL analysis tool
-        uses: github/codeql-action/init@v1
-        with:
-          languages: ${{ matrix.language }}
+      # - name: Initialize Code QL analysis tool
+      #   uses: github/codeql-action/init@v1
+      #   with:
+      #     languages: ${{ matrix.language }}
 
-      - name: Perform Code QL analysis
-        uses: github/codeql-action/analyze@v1
+      # - name: Perform Code QL analysis
+      #   uses: github/codeql-action/analyze@v1

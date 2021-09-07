@@ -1,20 +1,5 @@
 name: Optimize-Images
-
 on:
-  push:
-    branches:
-      - main
-      - development
-      - staging
-      - performanceTesting
-      - patch
-  pull_request:
-    branches:
-      - main
-      - development
-      - staging
-      - performanceTesting
-      - patch
   workflow_dispatch:
 jobs:
   build:
@@ -23,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node: [16]
 
     steps:
     - name: Checkout repository
