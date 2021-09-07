@@ -16,10 +16,14 @@ jobs:
       - name: Checking out Shelf Health API coder
         uses: actions/checkout@v2
         
-      # - name: minisauras
-      #   uses: TeamTigers/minisauras@v2.0.0
-      #   with:         
-      #     directory: ./ # default is ./
+      - name: minisauras
+        uses: TeamTigers/minisauras@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:         
+          directory: ./ # default is ./
+
+        
 
       - name: Deploying to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
